@@ -363,13 +363,13 @@ class RequestClient(object):
         self.refresh_limits(response[1])
         return response[0]
 
-    def change_position_margin(self, symbol: 'str', amount: 'float', type: 'int') -> any:
+    def change_position_margin(self, symbol: 'str', amount: 'float', type: 'int', positionMode: 'str') -> any:
         """
         Modify Isolated Position Margin (TRADE)
 
         POST /fapi/v1/positionMargin (HMAC SHA256)
         """
-        response = call_sync(self.request_impl.change_position_margin(symbol, amount, type))
+        response = call_sync(self.request_impl.change_position_margin(symbol, amount, type, positionMode))
         self.refresh_limits(response[1])
         return response[0]
 
