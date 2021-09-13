@@ -599,14 +599,16 @@ class RestApiRequestImpl(object):
         request.json_parser = parse
         return request
     
-    def change_position_margin(self, symbol, amount, type):
+    def change_position_margin(self, symbol, amount, type, positionMode):
         check_should_not_none(symbol, "symbol")
         check_should_not_none(amount, "amount")
         check_should_not_none(type, "type")
+        check_should_not_none(positionMode, "positionMode")
         builder = UrlParamsBuilder()
         builder.put_url("symbol", symbol)
         builder.put_url("amount", amount)
         builder.put_url("type", type)
+        builder.put_url("positionMode", positionMode)
 
         request = self.__create_request_by_post_with_signature("/fapi/v1/positionMargin", builder)
 
